@@ -10,8 +10,8 @@ version         = 1.0.0
 # Entry point is main.py at source.dir root (CI copies android/main.py here)
 source.main      = main.py
 
-# Requirements — pin Python so p4a does not pull 3.14
-requirements = python3==3.11.10,kivy==2.3.0,pillow,android,jnius
+# Requirements — jnius recipe is named pyjnius in p4a; python3 pin syntax unsupported
+requirements = python3,kivy==2.3.0,pillow,android,pyjnius
 
 # Android permissions
 android.permissions =
