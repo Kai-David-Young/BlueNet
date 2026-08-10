@@ -12,6 +12,7 @@ source.main      = main.py
 
 # Requirements — pin Python so p4a does not pull 3.14
 requirements = python3==3.11.10,kivy==2.3.0,pillow,android,jnius
+hostpython3 = 3.11.10
 
 # Android permissions
 android.permissions =
