@@ -60,10 +60,11 @@ jobs:
           restore-keys: pip-${{ runner.os }}-
 
       # ── 5. Python build tools ────────────────────────────────────────────
+      # cython<3.0 is required — cython 3.x breaks most p4a recipes
       - name: Install buildozer and Cython
         run: |
           pip install --upgrade pip wheel
-          pip install buildozer cython virtualenv
+          pip install buildozer "cython<3.0.0" virtualenv
 
       # ── 6. Prepare the build directory ──────────────────────────────────
       # buildozer.spec uses source.dir=. inside android/
@@ -80,7 +81,13 @@ jobs:
         env:
           ACCEPT_SDK_LICENSE: "y"
         run: |
-          yes | buildozer android debug 2>&1 | tee build.log
+          set -o pipefail
+          buildozer -v android debug 2>&1 | tee build.log
+          # pipefail propagates buildozer's exit code through tee
+          BUILD_RC=${PIPESTATUS[0]}
+          echo "--- APK output directory ---"
+          ls -lh bin/ 2>/dev/null || echo "(bin/ not created)"
+          exit $BUILD_RC
 
       # ── 8. Upload APK artifact ────────────────────────────────────────────
       - name: Upload APK

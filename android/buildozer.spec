@@ -10,8 +10,8 @@ version         = 1.0.0
 # Entry point is main.py at source.dir root (CI copies android/main.py here)
 source.main      = main.py
 
-# Requirements
-requirements = python3,kivy==2.3.0,pillow,android,jnius,sqlite3
+# Requirements — pin Python so p4a does not pull 3.14
+requirements = python3==3.11.10,kivy==2.3.0,pillow,android,jnius
 
 # Android permissions
 android.permissions =
@@ -25,15 +25,13 @@ android.permissions =
     WRITE_EXTERNAL_STORAGE
 
 # SDK / build settings
-android.minapi          = 21
-android.targetapi       = 33
-android.ndk             = 25b
-android.sdk             = 33
-android.ndk_api         = 21
+android.minapi             = 21
+android.targetapi          = 33
+android.ndk_api            = 21
 android.accept_sdk_license = True
 
-# Architecture (ARM64 for modern devices, ARM for older)
-android.archs = arm64-v8a, armeabi-v7a
+# arm64-v8a only for now — add armeabi-v7a once the build is stable
+android.archs = arm64-v8a
 
 # Feature flags
 android.features        = android.hardware.bluetooth
