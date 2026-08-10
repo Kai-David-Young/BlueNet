@@ -119,8 +119,9 @@ class ChatTab(ttk.Frame):
     def _refresh_convs(self):
         self._conv_list.delete(0, "end")
         self._conv_list.insert("end", "Broadcast (*)")
-        for peer in self.app.node.connected_peers():
-            self._conv_list.insert("end", f"{peer.name} ({peer.addr[:8]}...)")
+        if self.app.node:
+            for peer in self.app.node.connected_peers():
+                self._conv_list.insert("end", f"{peer.name} ({peer.addr[:8]}...)")
         self.after(5000, self._refresh_convs)
 
     def _on_conv_select(self, _evt=None):
@@ -431,6 +432,11 @@ class PeersTab(ttk.Frame):
     def _refresh(self):
         for row in self._tree.get_children():
             self._tree.delete(row)
+
+        if not self.app.node:
+            self._node_info.config(text="Starting Bluetooth...")
+            self.after(10000, self._refresh)
+            return
 
         peers = self.app.node.connected_peers()
         routes = self.app.node.routes.snapshot()

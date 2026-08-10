@@ -1,0 +1,54 @@
+{
+  "blueweb": "1.0",
+  "title": "BlueNet Home",
+  "author": "00:00:00:00:00:00",
+  "updated": 1700000000,
+  "sections": [
+    {
+      "type": "header",
+      "text": "Welcome to BlueNet",
+      "level": 1
+    },
+    {
+      "type": "text",
+      "content": "BlueNet is a decentralised communication platform that runs entirely over Bluetooth. No internet required — just devices within range forming a self-healing mesh network."
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "header",
+      "text": "How to navigate",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "content": "Type bt://DEVICE_ADDRESS/page into the address bar to visit a site hosted on another node. Sites are delivered peer-to-peer through the mesh."
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "header",
+      "text": "Features",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "content": "• Peer-to-peer chat (direct messages and group broadcast)\n• Mesh routing — messages relay through nearby nodes\n• BlueWeb sites — lightweight pages with text and images\n• Fully offline — no infrastructure required\n• Automatic peer discovery via Bluetooth scan"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "link",
+      "text": "My Profile",
+      "url": "bt://local/profile"
+    },
+    {
+      "type": "link",
+      "text": "About BlueNet",
+      "url": "bt://local/about"
+    }
+  ]
+}
