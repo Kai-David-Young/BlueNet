@@ -39,7 +39,7 @@ android.accept_sdk_license = True
 android.archs = arm64-v8a
 
 # Feature flags
-android.features        = android.hardware.bluetooth
+#android.features        = android.hardware.bluetooth
 
 # App icon / presplash (place files in assets/)
 # android.icon           = assets/icon.png
