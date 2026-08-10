@@ -80,14 +80,14 @@ jobs:
         working-directory: android
         env:
           ACCEPT_SDK_LICENSE: "y"
+          JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
         run: |
           set -o pipefail
           buildozer -v android debug 2>&1 | tee build.log
-          # pipefail propagates buildozer's exit code through tee
           BUILD_RC=${PIPESTATUS[0]}
           echo "--- APK output directory ---"
           ls -lh bin/ 2>/dev/null || echo "(bin/ not created)"
-          exit $BUILD_RC
+          exit $BUILD_RC          
 
       # ── 8. Upload APK artifact ────────────────────────────────────────────
       - name: Upload APK
