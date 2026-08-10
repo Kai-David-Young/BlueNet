@@ -1,0 +1,4 @@
+# Android (buildozer) requirements - list in buildozer.spec
+# For local testing on desktop before packaging:
+kivy>=2.3.0
+Pillow>=10.0.0
